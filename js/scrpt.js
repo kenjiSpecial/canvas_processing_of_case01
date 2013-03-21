@@ -67,6 +67,8 @@
       var i, _i, _ref, _results;
       _results = [];
       for (i = _i = 0, _ref = LineNum - 2; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+        this.context.lineCap = 'round';
+        this.context.lineJoin = 'round';
         this.context.beginPath();
         this.context.strokeStyle = "#fff";
         this.context.moveTo(this.lastPos[i].x, this.lastPos[i].y);
@@ -90,8 +92,6 @@
   } else {
     mobileStatus = false;
   }
-
-  alert(mobileStatus);
 
   window.requestAnimationFrame = (function() {
     return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(callback) {
@@ -125,7 +125,8 @@
     var touch;
     touch = e.touches[0];
     mouseX = touch.pageX;
-    return mouseY = touch.pageY;
+    mouseY = touch.pageY;
+    return e.preventDefault();
   };
 
   mouse_move = function(e) {

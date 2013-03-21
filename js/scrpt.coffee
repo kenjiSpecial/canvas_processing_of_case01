@@ -37,7 +37,8 @@ class Line
 
   draw: ()->
     for i in [0..LineNum-2]
-
+      @context.lineCap = 'round'
+      @context.lineJoin = 'round'
       @context.beginPath()
       @context.strokeStyle = "#fff"
       @context.moveTo(@lastPos[i].x, @lastPos[i].y)
@@ -53,12 +54,6 @@ if agent.search(/iPhone/) != -1 || agent.search(/iPad/) != -1 || agent.search(/i
 else
  mobileStatus = false;
 
-
-
-
-
-
-alert(mobileStatus)
 
 window.requestAnimationFrame = do ->
   window.requestAnimationFrame       ||
@@ -89,6 +84,9 @@ touch_move = (e)->
   touch = e.touches[0]
   mouseX = touch.pageX
   mouseY = touch.pageY
+
+  e.preventDefault()
+
 
 mouse_move = (e)->
   mouseX = e.x
